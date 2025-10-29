@@ -1,0 +1,9 @@
+Metadata-Version: 2.4
+Name: clipdfreader
+Version: 0.0.1
+Summary: PDF-CLI-Tool
+Author-email: Raphael Haerle <raphael@hhaerle.de>
+Maintainer-email: Raphael Haerle <raphael@hhaerle.de>
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+Requires-Dist: PyPDF2>=2.12.0

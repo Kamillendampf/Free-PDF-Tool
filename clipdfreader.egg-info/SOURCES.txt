@@ -1,0 +1,9 @@
+core.py
+main.py
+pyproject.toml
+clipdfreader.egg-info/PKG-INFO
+clipdfreader.egg-info/SOURCES.txt
+clipdfreader.egg-info/dependency_links.txt
+clipdfreader.egg-info/entry_points.txt
+clipdfreader.egg-info/requires.txt
+clipdfreader.egg-info/top_level.txt
