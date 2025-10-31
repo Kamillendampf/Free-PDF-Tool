@@ -31,7 +31,7 @@ def merge_pdf(output_path: str, input_paths: Sequence[str]) -> None:
 
 def read_pdf(input_paths: str, raw_selected_pages: list[str], password : str) -> str:
     try:
-        selected_pages : list[int] = [int(raw_selected_page) for selected_page in raw_selected_pages ]
+        selected_pages : list[int] = [int(selected_page) for selected_page in raw_selected_pages ]
     except ValueError:
         raise ValueError("Selected pages must be a positive integer")
 
