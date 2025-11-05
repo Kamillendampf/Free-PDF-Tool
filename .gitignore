@@ -28,4 +28,5 @@ env/
 # IDE
 .idea/
 .vscode/
-
+.idea/Free-PDF-Tool.iml
+.idea/misc.xml
