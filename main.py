@@ -3,7 +3,7 @@ import sys
 import core
 
 
-def ready(argv=None) -> None:
+def ready(argv=sys.argv) -> None:
     if argv is None:
         argv = sys.argv
     argv = argv if len(argv) < 1 else argv[1:]

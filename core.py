@@ -2,7 +2,7 @@ import os
 from collections.abc import Sequence
 
 from PyPDF2 import PdfMerger, PdfReader
-from pdf2docx import parse
+#from pdf2docx import parse
 
 import helper
 
