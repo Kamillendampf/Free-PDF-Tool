@@ -14,6 +14,7 @@ A lightweight command‑line application to **read** PDF text directly to the te
 
   * [`read` – Read a PDF](#read--read-a-pdf)
   * [`merge` – Merge PDFs](#merge--merge-pdfs)
+  * [`convert` – Convert PDFs](#convert--convert-pdfs)
 * [Examples](#examples)
 * [Exit Codes](#exit-codes)
 * [Error Handling & Troubleshooting](#error-handling--troubleshooting)
@@ -103,20 +104,19 @@ Reads a PDF file and prints its text to `stdout`.
 **Options**
 
 * `-f, --file <PATH>` – Input file (PDF)
-* `-p, --pages <RANGE>` – Page range (e.g., `1-3,5,10-`; default: all)
+* `-p, --pages <RANGE>` – Page range (e.g., `1-3,5,10-13`; default: all)
 * `-pass, --password <PW>` – Password for encrypted PDFs (if supported)
 
 **Notes for `--pages`**
 
 * **Ranges**: `a-b` (from `a` to `b`, inclusive)
 * **Single page**: `7` (only page 7)
-* **Open end**: `10-` (from page 10 to the end)
-* **Combinations**: separate with commas, e.g., `1-3,5,10-`
+* **Combinations**: separate with commas, e.g., `1-3,5,10-13`
 
 **Example**
 
 ```bash
-pdfreader read -f ./docs/report.pdf -p 1-3,5,10-
+pdfreader read -f ./docs/report.pdf -p 1-3,5,10-13
 ```
 
 ### `merge` – Merge PDFs
@@ -137,6 +137,24 @@ pdfreader merge -o ./out/combined.pdf -i ./in/a.pdf ./in/b.pdf ./in/c.pdf
 > **Note:** In the current parser, `--output` and `--input` are not marked as *required*. If they are missing, `core.merge_pdf` will likely raise an error. In practice, always provide both options.
 
 ---
+
+### `convert` – Convert PDFs
+
+Convert one PDF int to a docx file.
+
+**Options**
+* `-o, --output <PATH>` – Output file (e.g., `./out/combined.pdf`)
+* `-i, --input <FILES...>` – List of input files in merge order
+* `-p, --pages <RANGE>` – Page range (e.g., `1-3,5,10-13`; default: all)
+* `-pass, --password <PW>` – Password for encrypted PDFs (if supported)
+
+**Notes for `--pages`**
+
+* **Ranges**: `a-b` (from `a` to `b`, inclusive)
+* **Single page**: `7` (only page 7)
+* **Combinations**: separate with commas, e.g., `1-3,5,10-13`
+
+
 
 ## Examples
 
