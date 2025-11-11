@@ -28,14 +28,14 @@ def build_args_parser() -> argparse.ArgumentParser:
 
     sp_r = sub_parser.add_parser('read', help = 'Reads a PDF File \n -f --file spezifies the input file \n -p --page Specify sides that should be read \n -pass --password For decryption of PDF file if it`s secured')
     sp_r.add_argument("-f", "--file", nargs = '?', help = 'Specify file to read')
-    sp_r.add_argument("-p", "--pages", nargs="*", help = 'Specify sides that should be read')
+    sp_r.add_argument("-p", "--pages", nargs="?", help = 'Specify sides that should be read')
     sp_r.add_argument("-pass", "--password", nargs="?", help = 'For decryption of PDF file if it`s secured')
     sp_r.set_defaults(func=handle_reader)
 
     sp_c = sub_parser.add_parser('convert', help = 'Convert a PDF in to a docx file \n')
     sp_c.add_argument("-o", "--output", nargs="?", help = 'Specify output file')
     sp_c.add_argument("-i", "--input", nargs='?', help = 'Specify input files')
-    sp_c.add_argument("-p", "--pages", nargs="*", help = 'Specify sides that should be read')
+    sp_c.add_argument("-p", "--pages", nargs="?", help = 'Specify sides that should be converted')
     sp_c.add_argument("-pass", "--password", nargs="?", help = 'For decryption of PDF file if it`s secured')
     sp_c.set_defaults(func=handle_converter)
 
