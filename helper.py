@@ -12,6 +12,8 @@ def cmd_str_pages_2_int_tuple(raw_selected_pages : str) -> list[tuple[int]]:
         else:
             selected_pages.append((convert_str_pages_2_int_pages([page]), convert_str_pages_2_int_pages([page])))
 
+    return selected_pages
+
 def convert_str_pages_2_int_pages(raw_selected_pages : list[str]) -> list[int]:
     try:
         selected_pages : list[int] = [int(selected_page) for selected_page in raw_selected_pages ]

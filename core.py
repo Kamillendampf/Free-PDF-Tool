@@ -1,13 +1,14 @@
 import os
 from collections.abc import Sequence
-
 from PyPDF2 import PdfMerger, PdfReader
-#from pdf2docx import parse
+from pdf2docx import Converter
+
 
 import helper
 
 def merge_pdf(output_path: str, input_paths: Sequence[str]) -> None:
 
+    print("von merge_pdf" +output_path)
     if not input_paths:
         raise ValueError("Input paths cannot be empty")
 
@@ -18,7 +19,7 @@ def merge_pdf(output_path: str, input_paths: Sequence[str]) -> None:
 
     missing : list[str] = [p for p in input_paths if not os.path.isfile(p)]
     if missing:
-        raise FileNotFoundError(f'File Not Found: {', '.join(missing)}')
+        raise FileNotFoundError('File Not Found:' + ', '.join(missing))
 
     merger : PdfMerger = PdfMerger()
 
@@ -32,7 +33,10 @@ def merge_pdf(output_path: str, input_paths: Sequence[str]) -> None:
         raise f"Something went wrong"
 
 def read_pdf(input_paths: str, raw_selected_pages: str, password : str) -> str:
-    selected_pages : list[tuple[int]] = helper.cmd_str_pages_2_int_tuple(raw_selected_pages)
+    if raw_selected_pages:
+        selected_pages : list[tuple[int]] = helper.cmd_str_pages_2_int_tuple(raw_selected_pages)
+    else:
+        selected_pages = None
 
     if not input_paths:
         raise ValueError("Input paths cannot be empty")
@@ -64,3 +68,18 @@ def read_pdf(input_paths: str, raw_selected_pages: str, password : str) -> str:
 
     return "\n".join(pdf_parts)
 
+def convert_pdf_to_docx(input_paths : str, output_path_docx : str, raw_selected_pages : str, password : str):
+
+    convert = Converter(input_paths)
+
+    if raw_selected_pages:
+        print(f"[INFO] Converting PDF pages {raw_selected_pages} to docx")
+        to_include_pages : list[tuple[int]] = helper.cmd_str_pages_2_int_tuple(raw_selected_pages)
+        print("to_include pages "+ str(to_include_pages[0][0]))
+        for i in range(len(to_include_pages)):
+            convert.convert(output_path_docx, to_include_pages[i][0][0], to_include_pages[i][1][0]+1)
+    else:
+        print("[INFO] Converting all PDF pages to docx")
+        convert.convert(output_path_docx)
+
+    convert.close()
