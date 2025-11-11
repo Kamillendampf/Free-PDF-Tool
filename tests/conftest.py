@@ -1,4 +1,3 @@
-# tests/conftest.py
 from __future__ import annotations
 import os
 from pathlib import Path
@@ -10,7 +9,7 @@ import pytest
 def make_blank_pdf(tmp_path):
     """Erzeuge ein PDF ohne Text (nur leere Seiten)."""
     try:
-        from pypdf import PdfWriter
+        from PyPDF2 import PdfMerger, PdfReader, PdfWriter
     except Exception:
         from PyPDF2 import PdfWriter  # fallback
 
@@ -21,7 +20,7 @@ def make_blank_pdf(tmp_path):
             w.add_blank_page(width=595, height=842)  # A4
         with open(path, "wb") as f:
             w.write(f)
-        return path
+        return str(path)
 
     return _make
 

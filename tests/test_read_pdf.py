@@ -1,7 +1,8 @@
-# tests/test_read_pdf.py
 from __future__ import annotations
 import pytest
 import core
+
+
 
 def test_read_all_pages(make_text_pdf, patch_helper_noop):
     pdf = make_text_pdf("t.pdf", base="Hallo Welt", pages=2)
